@@ -1,0 +1,46 @@
+{
+    "language": "English",
+    "@language": {
+        "description": "The current language"
+    },
+    "ksGeneral": "General",
+    "@ksGeneral": {
+        "description": "The conventional newborn programmer greeting"
+      },
+    "ksSignOut": "Sign Out",
+    "ksCompanySignOut": "Company Sign out",
+    "ksLanguage": "Language",
+    "ksSubLanguage": "English",
+    "ksDisplayMode": "Display Mode",
+    "ksSubDisplayMode": "Dark mode",
+    "ksHome": "Home",
+    "ksAddDevice": "Add device",
+    "ksNodevice": "No device was added",
+    "ksSetting": "Settings",
+    "ksTimeZone": "TimeZone",
+    "ksDeselectAll": "Deselect all",
+    "ksSelected": "Selected",
+    "ksUnknown": "Unknown",
+    "ksSetupDevice": "Setup devices",
+    "ksDeviceName": "Device name",
+    "ksParameter": "Device parameter",
+    "ksWifiConnect": "WiFi connect",
+    "ksDeviceLocation": "Device location",
+    "ksSsid": "WiFi-ssid",
+    "ksPassword": "Password",
+    "ksProvision": "Provision",
+    "ksAutodetect": "Auto-detecting nearby devices...",
+    "ksCancel": "Cancel",
+    "ksDiscard": "Discard",
+    "ksCompanyName": "Company name",
+    "ksDeviceAllArea": "Device all area",
+    "ksConnectedDevice": "Connected devices",
+    "ksThirdPartyDevice": "ThirdPartyDevice",
+    "ksSelectLine": "Select line",
+    "ksStation": "Station",
+    "ksLoginWithOther": "Login with other Company",
+    "ksSiginYourltlabsAccount": "Sign-in to your LTLABS account",
+    "ksUsername": "Username",
+    "ksLoginCompany": "Login Company"
+}
+

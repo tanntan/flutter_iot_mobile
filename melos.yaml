@@ -1,0 +1,10 @@
+name: flutter_iot_mobile
+
+packages:
+  - "apps/**"
+  - "packages/**"
+
+
+scripts:
+  analyze:
+    exec: dart analyze .
