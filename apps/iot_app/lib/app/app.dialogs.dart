@@ -9,6 +9,7 @@ import 'package:stacked_services/stacked_services.dart';
 import 'app.locator.dart';
 import '../ui/dialogs/alert_dialog/alert_dialog_dialog.dart';
 import '../ui/dialogs/info_alert/info_alert_dialog.dart';
+import '../ui/dialogs/menu/menu_dialog.dart';
 import '../ui/dialogs/message/message_dialog.dart';
 import '../ui/dialogs/new_device_dialog/new_device_dialog_dialog.dart';
 
@@ -17,6 +18,7 @@ enum DialogType {
   newDeviceDialog,
   alertDialog,
   message,
+  menu,
 }
 
 void setupDialogUi() {
@@ -31,6 +33,8 @@ void setupDialogUi() {
         AlertDialogDialog(request: request, completer: completer),
     DialogType.message: (context, request, completer) =>
         MessageDialog(request: request, completer: completer),
+    DialogType.menu: (context, request, completer) =>
+        MenuDialog(request: request, completer: completer),
   };
 
   dialogService.registerCustomDialogBuilders(builders);

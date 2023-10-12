@@ -21,9 +21,9 @@ class JsonMsg {
     return JsonObject;
   }
 
-  String entityJsonMsg(int id) {
+  String deviceRegistry(int id) {
     var JsonObject =
-        jsonEncode({"type": "config/entity_registry/list", "id": id});
+        jsonEncode({"type": "config/device_registry/list", "id": id});
 
     return JsonObject;
   }

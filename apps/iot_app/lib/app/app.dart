@@ -11,6 +11,7 @@ import 'package:iot_app/services/iotapi_service.dart';
 import 'package:iot_app/services/ltie_service.dart';
 import 'package:iot_app/ui/bottom_sheets/notice/notice_sheet.dart';
 import 'package:iot_app/ui/dialogs/info_alert/info_alert_dialog.dart';
+import 'package:iot_app/ui/dialogs/menu/menu_dialog.dart';
 import 'package:iot_app/ui/dialogs/message/message_dialog.dart';
 import 'package:iot_app/ui/views/home/home_view.dart';
 import 'package:iot_app/ui/views/startup/startup_view.dart';
@@ -72,6 +73,7 @@ import 'package:iot_app/ui/views/login/login_view.dart';
     StackedDialog(classType: NewDeviceDialogDialog),
     StackedDialog(classType: AlertDialogDialog),
     StackedDialog(classType: MessageDialog),
+    StackedDialog(classType: MenuDialog),
 // @stacked-dialog
   ],
 )

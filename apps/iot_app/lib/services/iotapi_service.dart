@@ -4,6 +4,7 @@ import 'package:iot_app/core/appConfig.dart';
 import 'package:iot_app/core/model/companyInfo_model.dart';
 import 'package:iot_app/core/model/iot_device_model.dart';
 // import 'package:iot_app/utils/app-pref.dart';
+// import 'package:iot_app/utils/app-pref.dart';
 
 class IotapiService extends LTCrudApi<CompanyInfoModel> {
   IotapiService() {
@@ -14,13 +15,10 @@ class IotapiService extends LTCrudApi<CompanyInfoModel> {
 
   Future<List<IotDeviceModel>> getDevice() async {
     // CompanyInfoModel companyInfoModel = await AppPref.getCompanyInfo();
-
-    // post request to api
-    // baseUrl = companyInfoModel.baseURL ?? '';
     var resp = await get(route: "/devices/", params: {});
-    // if (kDebugMode) {
-    //   print('http_response======${resp.toString()}');
-    // }
+    if (kDebugMode) {
+      print('http_response======${resp.toString()}');
+    }
     List<IotDeviceModel> result = IotDeviceModel.fromJsonList(resp);
     return result;
   }

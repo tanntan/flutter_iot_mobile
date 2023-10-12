@@ -17,6 +17,8 @@ class Subtext extends StackedView<SubtextModel> {
   ) {
     return Text(
       text ?? 'none',
+      softWrap: false,
+      overflow: TextOverflow.ellipsis,
       style: style ??
           TextStyle(
               fontSize: 14,

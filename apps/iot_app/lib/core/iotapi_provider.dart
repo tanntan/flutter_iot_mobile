@@ -6,19 +6,28 @@ import 'package:iot_app/core/model/iot_device_model.dart';
 import 'package:iot_app/services/iotapi_service.dart';
 import 'package:stacked/stacked.dart';
 
-class IotApiProvider extends StreamViewModel<List<IotDeviceModel>> {
+class IotApiProvider extends BaseViewModel {
+  static final IotApiProvider _singleton = IotApiProvider._internal();
+  factory IotApiProvider() {
+    return _singleton;
+  }
+  IotApiProvider._internal();
+
   final _iotservice = locator<IotapiService>();
   List<IotDeviceModel> _deviceList = <IotDeviceModel>[];
-  @override
-  // TODO: implement stream
-  Stream<List<IotDeviceModel>> get stream => getDevice();
+  List<IotDeviceModel>? newDevices;
 
-  Stream<List<IotDeviceModel>> getDevice() async* {
-    List<IotDeviceModel>? newDevices;
+  Future<List<IotDeviceModel>> getDevice() async {
     newDevices = await _iotservice.getDevice();
-
-    yield newDevices;
-    await Future.delayed(Duration(seconds: 10));
+    for (var device in newDevices!) {
+      int idx = newDevices!.indexWhere((element) => element.id == device.id);
+      if (idx >= 0) {
+        newDevices![idx] = device;
+      } else {
+        newDevices!.add(device);
+      }
+    }
+    return newDevices ?? [];
   }
 
   Future postIotDevice(IotDeviceModel body) async {

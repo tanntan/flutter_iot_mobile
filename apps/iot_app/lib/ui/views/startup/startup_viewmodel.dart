@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:iot_app/core/json_str.dart';
 import 'package:iot_app/core/login_provider.dart';
 import 'package:iot_app/core/ltie_provider.dart';
+import 'package:iot_app/core/websocket_provider.dart';
 import 'package:iot_app/utils/app-pref.dart';
 import 'package:iot_app/utils/locale_constant.dart';
 import 'package:stacked/stacked.dart';
@@ -12,6 +14,7 @@ class StartupViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final _globalAdmin = locator<LoginProvider>();
   final _ltieProvider = locator<LtieProvider>();
+  final _websocketProvider = locator<WebSocketProvider>();
 
   Locale? locale;
   Future initialize() async {
@@ -20,6 +23,18 @@ class StartupViewModel extends BaseViewModel {
     notifyListeners();
     print(locale);
     runStartupLogic();
+    connectWS();
+  }
+
+  Future connectWS() async {
+    try {
+      _websocketProvider.connect();
+      int _id = _websocketProvider.convertStringToJson(_websocketProvider.msg);
+      _websocketProvider.send(JsonMsg().subEvent(_id));
+      _websocketProvider.send(JsonMsg().deviceRegistry(_id + 1));
+    } catch (e) {
+      print(e.toString());
+    }
   }
 
   // Place anything here that needs to happen before we get into the application

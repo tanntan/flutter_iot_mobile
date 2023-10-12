@@ -196,7 +196,6 @@ class BaseApi {
     try {
       print('apiHeaders => ${apiHeaders.toString()}');
       var url = _buildUrl(route: route ?? '', params: params);
-
       var resp = await http
           .get(url, headers: apiHeaders)
           .timeout(timeout, onTimeout: () => _onTimeOut(url, "get"));

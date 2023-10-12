@@ -5,7 +5,7 @@ class AppConfig {
 
   static const String tokenLtiePublicApi = '';
 
-  static const String iotApi = 'https://stx-feature.ltlabs.co/msv/iot/';
+  static const String iotApi = 'http://10.18.200.38:8000/';
   static const String hassAPI = 'https://demo-hacs.ltlabs.co/';
   static const String wsAPi = 'wss://demo-hacs.ltlabs.co/api/websocket';
   static const String hacsToken =

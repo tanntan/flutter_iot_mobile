@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:iot_app/ui/common/ui_helpers.dart';
 import 'package:iot_app/ui/views/home/home_viewmodel.dart';
-import 'package:iot_app/ui/views/thridparty/thridparty_view.dart';
 import 'package:iot_app/ui/widget/title_widget.dart';
 import 'package:iot_app/ui/widgets/common/custom_appbar/custom_appbar.dart';
 import 'package:iot_app/ui/widgets/common/subtext/subtext.dart';
@@ -29,12 +27,12 @@ class HomeView extends StackedView<HomeViewModel> {
                 ),
               ),
               actions: [
-                horizontalSpaceSmall,
                 IconButton(
-                  onPressed: viewModel.showDialog,
-                  icon: Icon(Icons.add_rounded),
-                ),
-                horizontalSpaceSmall,
+                    onPressed: viewModel.showDialog,
+                    icon: Icon(
+                      Icons.add,
+                      color: Theme.of(context).colorScheme.primary,
+                    ))
               ],
             ),
             SliverPadding(
@@ -65,7 +63,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                     )),
                                 TitleWidget(
                                   title:
-                                      viewModel.data?.length.toString() ?? '0',
+                                      viewModel.data?.length.toString() ?? '',
                                   style: TextStyle(
                                     color:
                                         Theme.of(context).colorScheme.onPrimary,
@@ -77,33 +75,40 @@ class HomeView extends StackedView<HomeViewModel> {
                           ),
                         ),
                       ),
-                      Container(
-                        width: 160.0,
-                        child: Card(
-                          elevation: 0.0,
-                          color: Theme.of(context).colorScheme.primary,
-                          child: Container(
-                            padding: EdgeInsets.all(10),
-                            child: Column(
-                              children: [
-                                Subtext(
-                                  text: translate(context).ksThirdPartyDevice,
-                                  style: TextStyle(
-                                    color:
-                                        Theme.of(context).colorScheme.onPrimary,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
+                      InkWell(
+                        onTap: viewModel.showDialog,
+                        child: SizedBox(
+                          width: 160.0,
+                          child: Card(
+                            elevation: 0.0,
+                            color: Theme.of(context).colorScheme.primary,
+                            child: Container(
+                              padding: EdgeInsets.all(10),
+                              child: Column(
+                                children: [
+                                  Subtext(
+                                    text: translate(context).ksThirdPartyDevice,
+                                    style: TextStyle(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onPrimary,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
-                                ),
-                                TitleWidget(
-                                  title: '0',
-                                  style: TextStyle(
-                                    color:
-                                        Theme.of(context).colorScheme.onPrimary,
-                                    fontSize: 60,
+                                  TitleWidget(
+                                    title: viewModel
+                                        .websocketProvider.entities.length
+                                        .toString(),
+                                    style: TextStyle(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onPrimary,
+                                      fontSize: 60,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -204,9 +209,6 @@ class HomeView extends StackedView<HomeViewModel> {
                 itemCount: viewModel.data?.length,
               ),
             ),
-            SliverToBoxAdapter(
-              child: ThridpartyView(),
-            )
           ],
         ),
       ),

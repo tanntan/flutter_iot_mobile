@@ -21,7 +21,8 @@ class CompanyLoginService extends LTCrudApi<CompanyInfoModel> {
   }
 
   Future<UserModel> userLogin(LoginModel user) async {
-    // post request to api
+    // post request to ap
+
     var resp = await post(route: "/company/userlogin", body: user, params: {});
     var result = UserModel.fromJson(resp);
     return result;
