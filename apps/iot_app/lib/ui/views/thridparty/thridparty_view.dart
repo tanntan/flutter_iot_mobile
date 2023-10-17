@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iot_app/core/model/entities_model.dart';
 import 'package:iot_app/ui/common/ui_helpers.dart';
+// ignore: unused_import
 import 'package:iot_app/ui/widget/title_widget.dart';
 
 import 'package:iot_app/ui/widgets/common/custom_appbar/custom_appbar.dart';
@@ -23,8 +24,8 @@ class ThridpartyView extends StackedView<ThridpartyViewModel> {
         backgroundColor: Theme.of(context).colorScheme.background,
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
-          child: Icon(Icons.add),
-          shape: CircleBorder(),
+          shape: const CircleBorder(),
+          child: const Icon(Icons.add),
         ),
         body: CustomScrollView(
           slivers: [
@@ -36,16 +37,16 @@ class ThridpartyView extends StackedView<ThridpartyViewModel> {
                     icon: Icon(viewModel.isGridView
                         ? Icons.list_rounded
                         : Icons.grid_view_rounded)),
-                IconButton(onPressed: () {}, icon: Icon(Icons.more_vert))
+                IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))
               ],
             ),
             SliverPadding(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               sliver: viewModel.dataReady
                   ? viewModel.isGridView
                       ? SliverGrid.builder(
                           gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
+                              const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                             mainAxisSpacing: 15,
                             crossAxisSpacing: 15,
@@ -55,16 +56,12 @@ class ThridpartyView extends StackedView<ThridpartyViewModel> {
                           itemCount: viewModel.data?.length ?? 0,
                         )
                       : SliverList.builder(
-                          itemBuilder: (context, index) => Container(
-                            child:
-                                CustomListTile(entity: viewModel.data?[index]),
-                          ),
+                          itemBuilder: (context, index) =>
+                              CustomListTile(entity: viewModel.data?[index]),
                           itemCount: viewModel.data?.length ?? 0,
                         )
-                  : SliverToBoxAdapter(
-                      child: Container(
-                        child: Text('No data'),
-                      ),
+                  : const SliverToBoxAdapter(
+                      child: Text('No data'),
                     ),
             ),
           ],
@@ -79,7 +76,6 @@ class ThridpartyView extends StackedView<ThridpartyViewModel> {
 
   @override
   void onViewModelReady(ThridpartyViewModel viewModel) {
-    // TODO: implement onViewModelReady
     viewModel.initialize();
     super.onViewModelReady(viewModel);
   }
@@ -88,7 +84,7 @@ class ThridpartyView extends StackedView<ThridpartyViewModel> {
 class CustomListTile extends StatelessWidget {
   final EntitiesModel? entity;
   final bool? isGridView;
-  CustomListTile({super.key, this.entity, this.isGridView});
+  const CustomListTile({super.key, this.entity, this.isGridView});
 
   @override
   Widget build(BuildContext context) {
@@ -113,6 +109,7 @@ class CustomListTile extends StatelessWidget {
 class CustomGridView extends StatelessWidget {
   final EntitiesModel? entity;
   final bool? isGridView;
+  // ignore: prefer_const_constructors_in_immutables
   CustomGridView({super.key, this.entity, this.isGridView});
 
   @override
@@ -122,7 +119,7 @@ class CustomGridView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(),
-          IconButton(onPressed: () {}, icon: Icon(Icons.more_vert))
+          IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))
         ],
       ),
       child: Column(
@@ -136,7 +133,7 @@ class CustomGridView extends StatelessWidget {
           horizontalSpaceSmall,
           Subtext(
             text: entity?.name ?? '',
-            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+            style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
           )
         ],
       ),

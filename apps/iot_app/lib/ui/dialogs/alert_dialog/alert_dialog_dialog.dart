@@ -8,8 +8,6 @@ import 'package:stacked_services/stacked_services.dart';
 
 import 'alert_dialog_dialog_model.dart';
 
-const double _graphicSize = 60;
-
 class AlertDialogDialog extends StackedView<AlertDialogDialogModel> {
   final DialogRequest request;
   final Function(DialogResponse) completer;
@@ -43,7 +41,7 @@ class AlertDialogDialog extends StackedView<AlertDialogDialogModel> {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 100,
                         width: 100,
                         child: RiveAnimation.asset('assets/question.riv'),

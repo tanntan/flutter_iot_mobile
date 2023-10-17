@@ -28,7 +28,7 @@ class BlewifiView extends StackedView<BlewifiViewModel> {
             title: translate(context).ksWifiConnect,
           ),
           SliverPadding(
-            padding: EdgeInsets.all(15),
+            padding: const EdgeInsets.all(15),
             sliver: SliverList(
               delegate: SliverChildListDelegate(
                 [
@@ -36,7 +36,7 @@ class BlewifiView extends StackedView<BlewifiViewModel> {
                     onChangeHandler: (value) {
                       viewModel.wifiController['ssid'] = value;
                     },
-                    prefexIcon: Icon(Icons.wifi),
+                    prefexIcon: const Icon(Icons.wifi),
                     label: translate(context).ksSsid,
                   ),
                   verticalSpaceMedium,
@@ -45,7 +45,7 @@ class BlewifiView extends StackedView<BlewifiViewModel> {
                       viewModel.wifiController['password'] = value;
                     },
                     secure: true,
-                    prefexIcon: Icon(Icons.lock),
+                    prefexIcon: const Icon(Icons.lock),
                     label: translate(context).ksPassword,
                   ),
                   verticalSpaceLarge,
@@ -56,7 +56,7 @@ class BlewifiView extends StackedView<BlewifiViewModel> {
                         TextButton(
                           style: ButtonStyle(
                             padding: MaterialStateProperty.resolveWith(
-                              (states) => EdgeInsets.symmetric(
+                              (states) => const EdgeInsets.symmetric(
                                   vertical: 15, horizontal: 10),
                             ),
                           ),
@@ -71,7 +71,7 @@ class BlewifiView extends StackedView<BlewifiViewModel> {
                         TextButton(
                           style: ButtonStyle(
                               padding: MaterialStateProperty.resolveWith(
-                                (states) => EdgeInsets.symmetric(
+                                (states) => const EdgeInsets.symmetric(
                                     vertical: 15, horizontal: 25),
                               ),
                               backgroundColor: MaterialStateColor.resolveWith(
@@ -104,7 +104,6 @@ class BlewifiView extends StackedView<BlewifiViewModel> {
 
   @override
   void onViewModelReady(BlewifiViewModel viewModel) {
-    // TODO: implement onViewModelReady
     viewModel.initialize();
     super.onViewModelReady(viewModel);
   }

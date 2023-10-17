@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:iot_app/app/app.locator.dart';
 import 'package:iot_app/utils/app-pref.dart';
 import 'package:stacked/stacked.dart';
@@ -15,7 +16,9 @@ class ProfileViewModel extends BaseViewModel {
       await AppPref.logout();
       await _navigationService.pushNamedAndRemoveUntil('/startup-view');
     } catch (e) {
-      print(e.toString());
+      if (kDebugMode) {
+        print(e.toString());
+      }
     }
   }
 }

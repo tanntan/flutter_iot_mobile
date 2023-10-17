@@ -15,7 +15,7 @@ class HomeView extends StackedView<HomeViewModel> {
       viewModelBuilder: () => HomeViewModel(),
       builder: (context, model, chile) => Scaffold(
         body: CustomScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           slivers: <Widget>[
             CustomAppbar(
               title: viewModel.companyInfoModel?.companyName,
@@ -36,20 +36,21 @@ class HomeView extends StackedView<HomeViewModel> {
               ],
             ),
             SliverPadding(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               sliver: SliverToBoxAdapter(
                 child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 1),
                   height: 140.0,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
-                      Container(
+                      SizedBox(
                         width: 160.0,
                         child: Card(
                           elevation: 0.0,
                           color: Theme.of(context).colorScheme.primary,
                           child: Container(
-                            padding: EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(10),
                             child: Column(
                               children: [
                                 Subtext(
@@ -83,7 +84,7 @@ class HomeView extends StackedView<HomeViewModel> {
                             elevation: 0.0,
                             color: Theme.of(context).colorScheme.primary,
                             child: Container(
-                              padding: EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10),
                               child: Column(
                                 children: [
                                   Subtext(
@@ -113,13 +114,13 @@ class HomeView extends StackedView<HomeViewModel> {
                           ),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: 160.0,
                         child: Card(
                           elevation: 0.0,
                           color: Theme.of(context).colorScheme.primary,
                           child: Container(
-                            padding: EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(10),
                             child: Column(
                               children: [
                                 Subtext(
@@ -151,64 +152,77 @@ class HomeView extends StackedView<HomeViewModel> {
             ),
             SliverToBoxAdapter(
               child: Container(
-                  padding: EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(15),
                   child:
                       TitleWidget(title: translate(context).ksDeviceAllArea)),
             ),
-            SliverPadding(
-              padding: EdgeInsets.all(10),
-              sliver: SliverGrid.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 15,
-                  crossAxisSpacing: 15,
-                ),
-                itemBuilder: (context, index) {
-                  return Container(
-                    height: 160,
-                    width: 160.0,
-                    child: Card(
-                      elevation: 0.0,
-                      color: Theme.of(context).colorScheme.surfaceVariant,
-                      child: Badge(
-                        smallSize: 25,
-                        backgroundColor:
-                            viewModel.data?[index].isActive ?? false
-                                ? Theme.of(context).colorScheme.primary
-                                : Theme.of(context).colorScheme.error,
-                        child: Container(
-                          padding: EdgeInsets.all(10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Subtext(
-                                text: 'Name: ${viewModel.data?[index].name}',
-                                style: TextStyle(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onSurfaceVariant,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
+            if (viewModel.dataReady) ...[
+              SliverPadding(
+                padding: const EdgeInsets.all(10),
+                sliver: SliverGrid.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 15,
+                    crossAxisSpacing: 15,
+                  ),
+                  itemBuilder: (context, index) {
+                    return SizedBox(
+                      height: 160,
+                      width: 160.0,
+                      child: Card(
+                        elevation: 0.0,
+                        color: Theme.of(context).colorScheme.surfaceVariant,
+                        child: Badge(
+                          smallSize: 25,
+                          backgroundColor:
+                              viewModel.data?[index].isActive ?? false
+                                  ? Theme.of(context).colorScheme.primary
+                                  : Theme.of(context).colorScheme.error,
+                          child: Container(
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Subtext(
+                                  text: 'Name: ${viewModel.data?[index].name}',
+                                  style: TextStyle(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSurfaceVariant,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                              Subtext(
-                                text:
-                                    'Location: ${viewModel.data?[index].lineName}-${viewModel.data?[index].stationId}',
-                              ),
-                              Image.network(
-                                'https://shop.m5stack.com/cdn/shop/products/01_1200x1200.jpg?v=1587104211',
-                                width: 80,
-                              ),
-                            ],
+                                Subtext(
+                                  text:
+                                      'Location: ${viewModel.data?[index].lineName}-${viewModel.data?[index].stationId}',
+                                ),
+                                Image.network(
+                                  'https://shop.m5stack.com/cdn/shop/products/01_1200x1200.jpg?v=1587104211',
+                                  width: 80,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  );
-                },
-                itemCount: viewModel.data?.length,
+                    );
+                  },
+                  itemCount: viewModel.data?.length ?? 0,
+                ),
               ),
-            ),
+            ] else ...[
+              const SliverToBoxAdapter(
+                child: Card(
+                  child: Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Subtext(
+                        text:
+                            'Cannot optain data, please check with administrator'),
+                  ),
+                ),
+              )
+            ]
           ],
         ),
       ),
@@ -217,7 +231,6 @@ class HomeView extends StackedView<HomeViewModel> {
 
   @override
   void onViewModelReady(HomeViewModel viewModel) {
-    // TODO: implement onViewModelReady
     viewModel.initialize();
     super.onViewModelReady(viewModel);
   }

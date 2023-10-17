@@ -27,7 +27,6 @@ class BleProvider extends BaseViewModel {
       deviceParam.add(device);
       notifyListeners();
     }
-    print(deviceParam.length);
   }
 
   void setDeviceBleParams(List<DeviceParams>? deviceParams) {
@@ -38,7 +37,7 @@ class BleProvider extends BaseViewModel {
   void setWiFiAp(Map<String, dynamic>? wifi) {
     wifiController['ssid'] = wifi?['ssid'] ?? 'none';
     wifiController['password'] = wifi?['password'] ?? 'none';
-    print(wifiController);
+
     notifyListeners();
   }
 

@@ -49,11 +49,11 @@ class CustomDropdownSearch extends StackedView<CustomDropdownSearchModel> {
               borderSide: BorderSide(
                 color: Theme.of(context).colorScheme.primary,
               )),
-          contentPadding: EdgeInsets.symmetric(
+          contentPadding: const EdgeInsets.symmetric(
               horizontal: 16.0, vertical: 12.0), // Padding inside the field
-          prefixIcon: prefexIcon ?? Icon(Icons.person), // Leading icon
+          prefixIcon: prefexIcon ?? const Icon(Icons.person), // Leading icon
           suffixIcon: IconButton(
-            icon: Icon(Icons.clear), // Trailing icon for clearing text
+            icon: const Icon(Icons.clear), // Trailing icon for clearing text
             onPressed: () {},
           ),
         ),
@@ -75,7 +75,7 @@ class CustomDropdownSearch extends StackedView<CustomDropdownSearchModel> {
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             border: UnderlineInputBorder(),
-            label: const Subtext(
+            label: Subtext(
               text: 'Line name',
             ),
           ),

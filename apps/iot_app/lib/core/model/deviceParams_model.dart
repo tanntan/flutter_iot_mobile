@@ -1,3 +1,7 @@
+// ignore: duplicate_ignore
+// ignore_for_file: file_names
+
+// ignore: depend_on_referenced_packages
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:iot_app/core/model/param_model.dart';
 

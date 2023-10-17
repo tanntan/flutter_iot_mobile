@@ -25,11 +25,11 @@ class AddDeviceView extends StackedView<AddDeviceViewModel> {
         onTap: viewModel.connectBle,
         child: Container(
           width: MediaQuery.of(context).size.width * 0.9,
-          padding: EdgeInsets.only(bottom: 10),
+          padding: const EdgeInsets.only(bottom: 10),
           child: AnimatedContainer(
             width: MediaQuery.of(context).size.width,
             alignment: Alignment.center,
-            duration: Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 300),
             height: viewModel.getList.isNotEmpty ? 60.0 : 0.0,
             decoration: BoxDecoration(
               color: viewModel.getList.isNotEmpty
@@ -52,7 +52,7 @@ class AddDeviceView extends StackedView<AddDeviceViewModel> {
         ),
       ),
       body: CustomScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         slivers: [
           CustomAppbar(
             title: translate(context).ksAddDevice,
@@ -64,10 +64,11 @@ class AddDeviceView extends StackedView<AddDeviceViewModel> {
                             (states) =>
                                 Theme.of(context).colorScheme.primaryContainer),
                         padding: MaterialStateProperty.resolveWith((states) =>
-                            EdgeInsets.symmetric(vertical: 10, horizontal: 20)),
+                            const EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 20)),
                       ),
                       onPressed: viewModel.deselectall,
-                      icon: Icon(Icons.close),
+                      icon: const Icon(Icons.close),
                       label: Subtext(
                         text: translate(context).ksDeselectAll,
                         style: TextStyle(
@@ -77,17 +78,17 @@ class AddDeviceView extends StackedView<AddDeviceViewModel> {
               IconButton(
                 style: ButtonStyle(
                     padding: MaterialStateProperty.resolveWith(
-                        (state) => EdgeInsets.all(10)),
+                        (state) => const EdgeInsets.all(10)),
                     backgroundColor: MaterialStateColor.resolveWith((states) =>
                         Theme.of(context).colorScheme.primaryContainer)),
                 onPressed: viewModel.reloadHandler,
-                icon: Icon(Icons.refresh),
+                icon: const Icon(Icons.refresh),
               ),
             ],
           ),
           viewModel.dataReady
               ? SliverPadding(
-                  padding: EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(15),
                   sliver: SliverGrid.count(
                     crossAxisCount: 2,
                     mainAxisSpacing: 15,
@@ -107,12 +108,13 @@ class AddDeviceView extends StackedView<AddDeviceViewModel> {
                         decoration: BoxDecoration(
                           color: Theme.of(context).colorScheme.surfaceVariant,
                         ),
-                        padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
+                        padding: const EdgeInsets.only(
+                            left: 10, bottom: 10, top: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             SpinKitDoubleBounce(
-                              duration: Duration(seconds: 3),
+                              duration: const Duration(seconds: 3),
                               color: Theme.of(context).colorScheme.error,
                               size: 20,
                             ),
@@ -134,7 +136,7 @@ class AddDeviceView extends StackedView<AddDeviceViewModel> {
                           Positioned(
                             child: Center(
                               child: SpinKitDoubleBounce(
-                                duration: Duration(seconds: 5),
+                                duration: const Duration(seconds: 5),
                                 color: Theme.of(context)
                                     .colorScheme
                                     .errorContainer,

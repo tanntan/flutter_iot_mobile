@@ -17,6 +17,7 @@ class LoadingAnimation extends StackedView<LoadingAnimationModel> {
     return RiveAnimation.asset(
       'assets/checkerror.riv',
       fit: BoxFit.contain,
+      // ignore: avoid_types_as_parameter_names, non_constant_identifier_names
       onInit: init ?? (Artboard) {},
     );
   }

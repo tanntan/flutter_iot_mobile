@@ -30,8 +30,9 @@ class HomeViewModel extends StreamViewModel<List<IotDeviceModel>> {
       _lineModel = await AppPref.getActiveLine();
       lineData = _lineModel?.data;
       websocketProvider.getEntity();
+      // ignore: empty_catches
     } catch (e) {
-      print(e.toString());
+      rethrow;
     }
   }
 
@@ -44,7 +45,6 @@ class HomeViewModel extends StreamViewModel<List<IotDeviceModel>> {
   }
 
   @override
-  // TODO: implement stream
   Stream<List<IotDeviceModel>> get stream => getDeviceStream();
 
   Stream<List<IotDeviceModel>> getDeviceStream() async* {

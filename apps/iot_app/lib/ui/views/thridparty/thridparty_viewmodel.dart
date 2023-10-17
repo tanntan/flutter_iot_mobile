@@ -10,23 +10,16 @@ class ThridpartyViewModel extends StreamViewModel<List<EntitiesModel>> {
   bool isGridView = false;
   Future<void> initialize() async {}
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
   void handleGridChange() {
     isGridView = !isGridView;
     notifyListeners();
   }
 
   @override
-  // TODO: implement stream
   Stream<List<EntitiesModel>> get stream => getDeviceEntity();
 
   Stream<List<EntitiesModel>> getDeviceEntity() async* {
     List<EntitiesModel> models = _webSocketProvider.entities;
-    print(models);
     notifyListeners();
     yield models;
   }

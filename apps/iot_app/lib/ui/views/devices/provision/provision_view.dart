@@ -26,7 +26,7 @@ class ProvisionView extends StackedView<ProvisionViewModel> {
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -45,14 +45,14 @@ class ProvisionView extends StackedView<ProvisionViewModel> {
                   }),
                 ),
                 Container(
-                  padding: EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(15),
                   width: 150,
                   child: InkWell(
                     onTap: viewModel.provisionHandler,
                     child: AnimatedContainer(
                       width: MediaQuery.of(context).size.width,
                       alignment: Alignment.center,
-                      duration: Duration(milliseconds: 300),
+                      duration: const Duration(milliseconds: 300),
                       height: viewModel.info ? 60.0 : 0.0,
                       decoration: BoxDecoration(
                         color: viewModel.info
@@ -86,7 +86,6 @@ class ProvisionView extends StackedView<ProvisionViewModel> {
   @override
   void onViewModelReady(ProvisionViewModel viewModel) {
     viewModel.initialize();
-    // TODO: implement onViewModelReady
     super.onViewModelReady(viewModel);
   }
 }

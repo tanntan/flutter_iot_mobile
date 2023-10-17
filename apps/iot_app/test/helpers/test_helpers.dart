@@ -1,3 +1,4 @@
+import 'package:iot_app/app/app.locator.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -8,6 +9,8 @@ import 'package:iot_app/services/globaladmin_service.dart';
 import 'package:iot_app/services/iotapi_service.dart';
 import 'package:iot_app/services/ltie_service.dart';
 import 'package:iot_app/services/hacs_service.dart';
+
+import 'test_helpers.mocks.dart';
 // @stacked-import
 
 @GenerateMocks([], customMocks: [
@@ -106,17 +109,10 @@ MockBleService getAndRegisterBleService() {
   return service;
 }
 
-MockBleService getAndRegisterBleService() {
-  _removeRegistrationIfExists<BleService>();
-  final service = MockBleService();
-  locator.registerSingleton<BleService>(service);
-  return service;
-}
-
-MockCompanyloginService getAndRegisterCompanyloginService() {
-  _removeRegistrationIfExists<CompanyloginService>();
-  final service = MockCompanyloginService();
-  locator.registerSingleton<CompanyloginService>(service);
+MockCompanyLoginService getAndRegisterCompanyloginService() {
+  _removeRegistrationIfExists<CompanyLoginService>();
+  final service = MockCompanyLoginService();
+  locator.registerSingleton<CompanyLoginService>(service);
   return service;
 }
 
@@ -124,13 +120,6 @@ MockGlobaladminService getAndRegisterGlobaladminService() {
   _removeRegistrationIfExists<GlobaladminService>();
   final service = MockGlobaladminService();
   locator.registerSingleton<GlobaladminService>(service);
-  return service;
-}
-
-MockCompanyloginService getAndRegisterCompanyloginService() {
-  _removeRegistrationIfExists<CompanyloginService>();
-  final service = MockCompanyloginService();
-  locator.registerSingleton<CompanyloginService>(service);
   return service;
 }
 

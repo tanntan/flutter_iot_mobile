@@ -18,18 +18,19 @@ class ProfileView extends StackedView<ProfileViewModel> {
   ) {
     return Scaffold(
       body: CustomScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         slivers: [
           const CustomAppbar(
             title: '',
             expandedHeight: 0.0,
           ),
           SliverPadding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             sliver: SliverList(
               delegate: SliverChildListDelegate(
                 [
-                  Container(
+                  // ignore: prefer_const_constructors
+                  SizedBox(
                     height: 100,
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -67,10 +68,10 @@ class ProfileView extends StackedView<ProfileViewModel> {
                   ),
                   verticalSpaceLarge,
                   Container(
-                    padding: EdgeInsets.only(top: 10, bottom: 10),
+                    padding: const EdgeInsets.only(top: 10, bottom: 10),
                     decoration: BoxDecoration(
                       color: Colors.grey.withOpacity(0.2),
-                      borderRadius: BorderRadius.all(
+                      borderRadius: const BorderRadius.all(
                         Radius.circular(15),
                       ),
                     ),
@@ -79,17 +80,17 @@ class ProfileView extends StackedView<ProfileViewModel> {
                         ListItemWidget(
                           title: AppLocalizations.of(context)!.ksSetting,
                           onTap: viewModel.handleSettingMenu,
-                          leading: Icon(Icons.settings),
+                          leading: const Icon(Icons.settings),
                         ),
                       ],
                     ),
                   ),
                   verticalSpaceSmall,
                   Container(
-                    padding: EdgeInsets.only(top: 10, bottom: 10),
+                    padding: const EdgeInsets.only(top: 10, bottom: 10),
                     decoration: BoxDecoration(
                       color: Colors.grey.withOpacity(0.2),
-                      borderRadius: BorderRadius.all(
+                      borderRadius: const BorderRadius.all(
                         Radius.circular(15),
                       ),
                     ),
@@ -98,14 +99,14 @@ class ProfileView extends StackedView<ProfileViewModel> {
                         ListItemWidget(
                           title: AppLocalizations.of(context)!.ksSignOut,
                           onTap: () => {},
-                          leading: Icon(Icons.exit_to_app_rounded),
-                          subtitle: Text('Sign only user data'),
+                          leading: const Icon(Icons.exit_to_app_rounded),
+                          subtitle: const Text('Sign only user data'),
                         ),
                         ListItemWidget(
                           title: AppLocalizations.of(context)!.ksCompanySignOut,
                           onTap: viewModel.logoutCompany,
-                          leading: Icon(Icons.logout),
-                          subtitle: Text('Delete Company data'),
+                          leading: const Icon(Icons.logout),
+                          subtitle: const Text('Delete Company data'),
                         ),
                       ],
                     ),

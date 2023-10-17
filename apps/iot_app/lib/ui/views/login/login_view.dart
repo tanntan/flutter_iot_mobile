@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iot_app/ui/common/ui_helpers.dart';
@@ -47,16 +45,16 @@ class LoginView extends StackedView<LoginViewModel> {
               IconButton(
                   onPressed: () =>
                       viewModel.languageSetting('Language', context),
-                  icon: Icon(Icons.language_rounded))
+                  icon: const Icon(Icons.language_rounded))
             ],
           ),
           SliverPadding(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             sliver: SliverList(
               delegate: SliverChildListDelegate(
                 [
                   Container(
-                    padding: EdgeInsets.all(25),
+                    padding: const EdgeInsets.all(25),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Theme.of(context).colorScheme.surfaceVariant),
@@ -90,18 +88,18 @@ class LoginView extends StackedView<LoginViewModel> {
                               inputFormatters: [UpperCaseTextFormatter()],
                               textCapitalization: TextCapitalization.sentences,
                               onChanged: viewModel.onValue,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),
                               decoration: InputDecoration(
                                 label: Subtext(
                                   text: translate(context).ksCompanyName,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                border: UnderlineInputBorder(),
+                                border: const UnderlineInputBorder(),
                               ),
                             ),
                             verticalSpaceMedium,
@@ -153,7 +151,7 @@ class LoginView extends StackedView<LoginViewModel> {
                         ),
                         viewModel.isSubmitted ?? false
                             ? AnimatedOpacity(
-                                duration: Duration(seconds: 1),
+                                duration: const Duration(seconds: 1),
                                 opacity:
                                     viewModel.isSubmitted ?? false ? 1.0 : 0,
                                 child: Stack(children: [
@@ -238,7 +236,6 @@ class LoginView extends StackedView<LoginViewModel> {
 
   @override
   void onViewModelReady(LoginViewModel viewModel) {
-    // TODO: implement onViewModelReady
     viewModel.initialize();
     super.onViewModelReady(viewModel);
   }
@@ -273,7 +270,7 @@ class HeaderLogo extends StatelessWidget {
       ),
       Subtext(
         text: subtitle ?? 'Description',
-        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
+        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
       )
     ]);
   }
@@ -301,7 +298,7 @@ class LoginPanel extends StackedView<LoginViewModel> {
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surfaceVariant,
       ),
-      padding: EdgeInsets.all(15),
+      padding: const EdgeInsets.all(15),
       child: Stack(
         children: [
           Column(
@@ -316,9 +313,9 @@ class LoginPanel extends StackedView<LoginViewModel> {
                 subtitle: translate(context).ksSiginYourltlabsAccount,
               ),
               verticalSpaceSmall,
-              username ?? TextField(),
+              username ?? const TextField(),
               verticalSpaceSmall,
-              password ?? TextField(),
+              password ?? const TextField(),
               Row(
                 children: [
                   Checkbox(
@@ -326,7 +323,7 @@ class LoginPanel extends StackedView<LoginViewModel> {
                     onChanged: (value) => {},
                     semanticLabel: 'Remember me',
                   ),
-                  Subtext(
+                  const Subtext(
                     text: 'Remember me',
                   ),
                 ],

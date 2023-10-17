@@ -5,22 +5,25 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/foundation.dart' as _i13;
-import 'package:flutter/material.dart' as _i12;
+import 'package:flutter/foundation.dart' as _i14;
+import 'package:flutter/material.dart' as _i13;
 import 'package:flutter/material.dart';
-import 'package:iot_app/core/model/BleDevice_model.dart' as _i14;
-import 'package:iot_app/ui/views/add_device/add_device_view.dart' as _i6;
-import 'package:iot_app/ui/views/blewifi/blewifi_view.dart' as _i8;
-import 'package:iot_app/ui/views/blue_connect/blue_connect_view.dart' as _i7;
+import 'package:iot_app/core/model/BleDevice_model.dart' as _i15;
+import 'package:iot_app/ui/views/devices/add_device/add_device_view.dart'
+    as _i6;
+import 'package:iot_app/ui/views/devices/blewifi/blewifi_view.dart' as _i8;
+import 'package:iot_app/ui/views/devices/blue_connect/blue_connect_view.dart'
+    as _i7;
+import 'package:iot_app/ui/views/devices/devices_view.dart' as _i12;
 import 'package:iot_app/ui/views/home/home_view.dart' as _i2;
 import 'package:iot_app/ui/views/login/login_view.dart' as _i10;
 import 'package:iot_app/ui/views/profile/profile_view.dart' as _i4;
-import 'package:iot_app/ui/views/provision/provision_view.dart' as _i9;
+import 'package:iot_app/ui/views/devices/provision/provision_view.dart' as _i9;
 import 'package:iot_app/ui/views/setting/setting_view.dart' as _i5;
 import 'package:iot_app/ui/views/startup/startup_view.dart' as _i3;
 import 'package:iot_app/ui/views/thridparty/thridparty_view.dart' as _i11;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i15;
+import 'package:stacked_services/stacked_services.dart' as _i16;
 
 class Routes {
   static const homeView = '/home-view';
@@ -43,6 +46,8 @@ class Routes {
 
   static const thridpartyView = '/thridparty-view';
 
+  static const devicesView = '/devices-view';
+
   static const all = <String>{
     homeView,
     startupView,
@@ -54,6 +59,7 @@ class Routes {
     provisionView,
     loginView,
     thridpartyView,
+    devicesView,
   };
 }
 
@@ -99,35 +105,39 @@ class StackedRouter extends _i1.RouterBase {
       Routes.thridpartyView,
       page: _i11.ThridpartyView,
     ),
+    _i1.RouteDef(
+      Routes.devicesView,
+      page: _i12.DevicesView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
     _i3.StartupView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.StartupView(),
         settings: data,
       );
     },
     _i4.ProfileView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.ProfileView(),
         settings: data,
       );
     },
     _i5.SettingView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.SettingView(),
         settings: data,
       );
     },
     _i6.AddDeviceView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.AddDeviceView(),
         settings: data,
       );
@@ -136,33 +146,39 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<BlueConnectViewArguments>(
         orElse: () => const BlueConnectViewArguments(),
       );
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i7.BlueConnectView(key: args.key, argument: args.argument),
         settings: data,
       );
     },
     _i8.BlewifiView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i8.BlewifiView(),
         settings: data,
       );
     },
     _i9.ProvisionView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.ProvisionView(),
         settings: data,
       );
     },
     _i10.LoginView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i10.LoginView(),
         settings: data,
       );
     },
     _i11.ThridpartyView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i11.ThridpartyView(),
+        settings: data,
+      );
+    },
+    _i12.DevicesView: (data) {
+      return _i13.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i12.DevicesView(),
         settings: data,
       );
     },
@@ -180,9 +196,9 @@ class BlueConnectViewArguments {
     this.argument,
   });
 
-  final _i13.Key? key;
+  final _i14.Key? key;
 
-  final List<_i14.BleDevice>? argument;
+  final List<_i15.BleDevice>? argument;
 
   @override
   String toString() {
@@ -201,7 +217,7 @@ class BlueConnectViewArguments {
   }
 }
 
-extension NavigatorStateExtension on _i15.NavigationService {
+extension NavigatorStateExtension on _i16.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -273,8 +289,8 @@ extension NavigatorStateExtension on _i15.NavigationService {
   }
 
   Future<dynamic> navigateToBlueConnectView({
-    _i13.Key? key,
-    List<_i14.BleDevice>? argument,
+    _i14.Key? key,
+    List<_i15.BleDevice>? argument,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -339,6 +355,20 @@ extension NavigatorStateExtension on _i15.NavigationService {
         transition,
   ]) async {
     return navigateTo<dynamic>(Routes.thridpartyView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToDevicesView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.devicesView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -416,8 +446,8 @@ extension NavigatorStateExtension on _i15.NavigationService {
   }
 
   Future<dynamic> replaceWithBlueConnectView({
-    _i13.Key? key,
-    List<_i14.BleDevice>? argument,
+    _i14.Key? key,
+    List<_i15.BleDevice>? argument,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -482,6 +512,20 @@ extension NavigatorStateExtension on _i15.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.thridpartyView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithDevicesView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.devicesView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

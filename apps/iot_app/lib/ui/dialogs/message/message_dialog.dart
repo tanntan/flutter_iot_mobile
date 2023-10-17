@@ -8,8 +8,6 @@ import 'package:stacked_services/stacked_services.dart';
 
 import 'message_dialog_model.dart';
 
-const double _graphicSize = 60;
-
 class MessageDialog extends StackedView<MessageDialogModel> {
   final DialogRequest request;
   final Function(DialogResponse) completer;
@@ -51,7 +49,7 @@ class _BasicDialogContent extends StatelessWidget {
       alignment: Alignment.topCenter,
       children: [
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 10),
+          margin: const EdgeInsets.symmetric(horizontal: 10),
           padding: const EdgeInsets.only(
             top: 32,
             left: 16,

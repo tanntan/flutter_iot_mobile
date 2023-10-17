@@ -25,7 +25,9 @@ class SettingViewModel extends BaseViewModel {
       languageSub =
           radioList.firstWhere((element) => element['value'] == language);
       notifyListeners();
-    } catch (e) {}
+    } catch (e) {
+      rethrow;
+    }
   }
 
   void handler(String? value) async {
@@ -33,7 +35,7 @@ class SettingViewModel extends BaseViewModel {
   }
 
   void languageSetting(String? title, BuildContext context) async {
-    var _dialog = await _dialogService.showCustomDialog(
+    var dialog = await _dialogService.showCustomDialog(
       variant: DialogType.newDeviceDialog,
       title: title,
       description: title,
@@ -43,8 +45,10 @@ class SettingViewModel extends BaseViewModel {
         radioList: radioList,
       ),
     );
-    _dialog?.confirmed ?? false
+    dialog?.confirmed ?? false
+        // ignore: use_build_context_synchronously
         ? languageChange(language, context)
+        // ignore: avoid_print
         : print("Hello");
   }
 

@@ -27,7 +27,7 @@ class IotApiProvider extends BaseViewModel {
         newDevices!.add(device);
       }
     }
-    return newDevices ?? [];
+    return newDevices!;
   }
 
   Future postIotDevice(IotDeviceModel body) async {

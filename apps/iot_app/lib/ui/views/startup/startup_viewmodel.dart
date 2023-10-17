@@ -21,7 +21,6 @@ class StartupViewModel extends BaseViewModel {
     locale = await getLocale();
 
     notifyListeners();
-    print(locale);
     runStartupLogic();
     connectWS();
   }
@@ -29,11 +28,11 @@ class StartupViewModel extends BaseViewModel {
   Future connectWS() async {
     try {
       _websocketProvider.connect();
-      int _id = _websocketProvider.convertStringToJson(_websocketProvider.msg);
-      _websocketProvider.send(JsonMsg().subEvent(_id));
-      _websocketProvider.send(JsonMsg().deviceRegistry(_id + 1));
+      int id = _websocketProvider.convertStringToJson(_websocketProvider.msg);
+      _websocketProvider.send(JsonMsg().subEvent(id));
+      _websocketProvider.send(JsonMsg().deviceRegistry(id + 1));
     } catch (e) {
-      print(e.toString());
+      rethrow;
     }
   }
 

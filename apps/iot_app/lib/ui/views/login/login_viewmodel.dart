@@ -51,7 +51,9 @@ class LoginViewModel extends BaseViewModel {
       languageSub =
           radioList.firstWhere((element) => element['value'] == language);
       notifyListeners();
-    } catch (e) {}
+    } catch (e) {
+      rethrow;
+    }
   }
 
   void handler(String? value) async {
@@ -59,7 +61,7 @@ class LoginViewModel extends BaseViewModel {
   }
 
   void languageSetting(String? title, BuildContext context) async {
-    var _dialog = await _dialogService.showCustomDialog(
+    var dialog = await _dialogService.showCustomDialog(
       variant: DialogType.newDeviceDialog,
       title: title,
       description: title,
@@ -69,8 +71,10 @@ class LoginViewModel extends BaseViewModel {
         radioList: radioList,
       ),
     );
-    _dialog?.confirmed ?? false
+    dialog?.confirmed ?? false
+        // ignore: use_build_context_synchronously
         ? languageChange(language, context)
+        // ignore: avoid_print
         : print("Hello");
   }
 
@@ -102,7 +106,7 @@ class LoginViewModel extends BaseViewModel {
       isSuccess = await _auth.companyLogin(companyModel);
       check?.fire();
       notifyListeners();
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 2));
       isSubmitted = isSuccess['success'];
       isLoginSuccess = false;
       notifyListeners();
@@ -136,7 +140,6 @@ class LoginViewModel extends BaseViewModel {
     if (dialog?.confirmed ?? false) {
       isLoginSuccess = false;
       notifyListeners();
-      print(dialog?.confirmed ?? false);
     }
   }
 
@@ -154,7 +157,7 @@ class LoginViewModel extends BaseViewModel {
       case UserModel:
         check?.fire();
         notifyListeners();
-        await Future.delayed(Duration(seconds: 3));
+        await Future.delayed(const Duration(seconds: 3));
         isLoginSuccess = false;
         _navigationService.pushNamedAndRemoveUntil('/home-view');
         notifyListeners();

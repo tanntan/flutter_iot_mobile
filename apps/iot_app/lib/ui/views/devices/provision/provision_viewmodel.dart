@@ -26,10 +26,10 @@ class ProvisionViewModel extends BaseViewModel {
   EspProv? prov;
   Future initialize() async {
     reset?.fire();
-    CompanyInfoModel _companyInfoModel = await AppPref.getCompanyInfo();
+    CompanyInfoModel companyInfoModel = await AppPref.getCompanyInfo();
     for (DeviceParams device in _bleProvider.deviceParam) {
       device.params.gmtOffset = DateTime.now().timeZoneOffset.inSeconds;
-      device.params.environment = _companyInfoModel.company;
+      device.params.environment = companyInfoModel.company;
       device.params.mqttServer = 'mqtt-dev.ltlabs.co';
       try {
         notifyListeners();
@@ -54,12 +54,12 @@ class ProvisionViewModel extends BaseViewModel {
             description: "description",
             version: "version");
         await _iotProvider.postIotDevice(iotDevice);
+        // ignore: prefer_const_constructors
         await Future.delayed(Duration(seconds: 2));
         info = true;
         notifyListeners();
       } catch (e) {
         cError?.fire();
-        print(e.toString());
       }
     }
     check?.fire();

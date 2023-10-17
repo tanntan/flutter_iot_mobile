@@ -16,15 +16,16 @@ class LanguageProvider extends ChangeNotifier {
   }
 
   Future<Locale> getNewLocale() async {
-    Locale _locale = await getLocale();
-    locale = _locale;
+    Locale locale = await getLocale();
+    locale = locale;
     notifyListeners();
-    return locale!;
+    return locale;
   }
 
   Future<void> setNewLocale(String? languageCode, BuildContext context) async {
-    Locale? _locale = await setLocale(languageCode!);
-    MainApp.setlocale(context, _locale);
+    Locale? locale = await setLocale(languageCode!);
+    // ignore: use_build_context_synchronously
+    MainApp.setlocale(context, locale);
     notifyListeners();
   }
 

@@ -19,6 +19,7 @@ class CustomButton extends StackedView<CustomButtonModel> {
       child: InkWell(
         onTap: onTab,
         child: Container(
+          // ignore: prefer_const_constructors
           padding: EdgeInsets.all(15),
           alignment: Alignment.center,
           decoration: BoxDecoration(

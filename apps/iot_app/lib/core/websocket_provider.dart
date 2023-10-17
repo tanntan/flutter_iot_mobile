@@ -28,7 +28,7 @@ class WebSocketProvider extends BaseViewModel {
     _channel?.stream.listen((message) {
       Map json = jsonDecode(message);
       _id = convertStringToJson(message);
-      print(json);
+
       if (json['type'] == 'event') {
         _event = message;
         notifyListeners();
@@ -41,8 +41,8 @@ class WebSocketProvider extends BaseViewModel {
 
   Future getEntity() async {
     send(JsonMsg().deviceRegistry(_id + 1));
-    Map _jsonData = json.decode(_msg!);
-    entities = EntitiesModel.fromJsonList(_jsonData['result']);
+    Map jsonData = json.decode(_msg!);
+    entities = EntitiesModel.fromJsonList(jsonData['result']);
     entities = entities
         .where(
             (entity) => entity.disabledBy == null && entity.entryType == null)

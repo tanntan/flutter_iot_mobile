@@ -24,7 +24,7 @@ class BlueConnectView extends StackedView<BlueConnectViewModel> {
       backgroundColor: Theme.of(context).colorScheme.background,
       floatingActionButton: FloatingActionButton(
         onPressed: viewModel.submitHandler,
-        child: Icon(Icons.arrow_forward_ios_outlined),
+        child: const Icon(Icons.arrow_forward_ios_outlined),
       ),
       body: CustomScrollView(
         slivers: [
@@ -32,7 +32,7 @@ class BlueConnectView extends StackedView<BlueConnectViewModel> {
             title: translate(context).ksParameter,
           ),
           SliverPadding(
-            padding: EdgeInsets.all(15),
+            padding: const EdgeInsets.all(15),
             sliver: SliverList(
               delegate: SliverChildListDelegate(
                 viewModel.deviceWithparam
@@ -43,7 +43,7 @@ class BlueConnectView extends StackedView<BlueConnectViewModel> {
                               color: Theme.of(context)
                                   .colorScheme
                                   .onInverseSurface),
-                          margin: EdgeInsets.only(bottom: 10),
+                          margin: const EdgeInsets.only(bottom: 10),
                           padding: const EdgeInsets.symmetric(
                               vertical: 20.0, horizontal: 15.0),
                           child: Column(
@@ -66,7 +66,7 @@ class BlueConnectView extends StackedView<BlueConnectViewModel> {
                                 onChangeHandler: (value) {
                                   device.params.deviceName = value;
                                 },
-                                prefexIcon: Icon(Icons.devices),
+                                prefexIcon: const Icon(Icons.devices),
                                 label: translate(context).ksDeviceName,
                               ),
                               verticalSpaceMedium,
@@ -77,11 +77,11 @@ class BlueConnectView extends StackedView<BlueConnectViewModel> {
                                   device.params.line = value!.lineName;
                                 },
                                 datas: viewModel.allLineData,
-                                prefexIcon: Icon(Icons.area_chart),
+                                prefexIcon: const Icon(Icons.area_chart),
                               ),
                               verticalSpaceMedium,
                               CustomTextField(
-                                prefexIcon: Icon(Icons.engineering),
+                                prefexIcon: const Icon(Icons.engineering),
                                 type: TextInputType.number,
                                 onChangeHandler: (value) {
                                   device.params.station = int.parse(value);

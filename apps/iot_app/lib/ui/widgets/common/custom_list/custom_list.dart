@@ -23,7 +23,7 @@ class CustomList extends StackedView<CustomListModel> {
     return InkWell(
       onTap: () => selectHandler!(device!),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
         decoration: BoxDecoration(
           backgroundBlendMode: null,
           borderRadius: BorderRadius.circular(10),
@@ -33,7 +33,7 @@ class CustomList extends StackedView<CustomListModel> {
               color: Theme.of(context).cardColor,
               spreadRadius: 5,
               blurRadius: 5,
-              offset: Offset(0, 5), // changes position of shadow
+              offset: const Offset(0, 5), // changes position of shadow
             ),
           ],
         ),
@@ -66,7 +66,7 @@ class CustomList extends StackedView<CustomListModel> {
                 device!.localName.isEmpty
                     ? translate(context).ksUnknown
                     : device!.localName,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                 ),

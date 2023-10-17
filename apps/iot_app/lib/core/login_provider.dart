@@ -21,7 +21,6 @@ class LoginProvider extends BaseViewModel {
       await _companyLoginService.authentication();
       return true;
     } catch (e) {
-      print(e);
       return false;
     }
   }
@@ -43,12 +42,12 @@ class LoginProvider extends BaseViewModel {
 
   Future<dynamic> userLogin(LoginModel model) async {
     try {
-      UserModel _user = await _companyLoginService.userLogin(model);
+      UserModel user = await _companyLoginService.userLogin(model);
       if (kDebugMode) {
-        print('_user $_user');
+        print('_user $user');
       }
-      await AppPref.setUserModel(_user);
-      return _user;
+      await AppPref.setUserModel(user);
+      return user;
     } catch (e) {
       if (kDebugMode) {
         print(' error ${e.toString()}');
@@ -65,7 +64,7 @@ class LoginProvider extends BaseViewModel {
         print(resp);
       }
     } catch (err) {
-      print(err.toString());
+      rethrow;
     }
   }
 }

@@ -1,5 +1,4 @@
 import 'package:core/core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:iot_app/core/model/activeLine_model.dart';
 import 'package:iot_app/core/model/companyInfo_model.dart';
 import 'package:iot_app/utils/app-pref.dart';

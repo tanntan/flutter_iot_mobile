@@ -48,9 +48,4 @@ class BlueConnectViewModel extends BaseViewModel {
     navigationService.navigateTo('/blewifi-view');
     notifyListeners();
   }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
 }

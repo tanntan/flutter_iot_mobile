@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 // ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
 // ignore: depend_on_referenced_packages
@@ -22,9 +24,9 @@ class BleDevice {
   @override
   bool operator ==(other) =>
       other is BleDevice &&
-      compareAsciiLowerCase(this.name, other.name) == 0 &&
-      this.id == other.id &&
-      this.rssi == other.rssi;
+      compareAsciiLowerCase(name, other.name) == 0 &&
+      id == other.id &&
+      rssi == other.rssi;
 
   @override
   String toString() {

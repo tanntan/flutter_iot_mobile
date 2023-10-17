@@ -38,6 +38,7 @@ class BleService {
       // restoreStateIdentifier: "example-ble-client-id",
       for (var result in results) {
         BluetoothDevice bluetoothDevice = result.device;
+        // ignore: deprecated_member_use
         log.v("Restored bluetoothDevice: ${bluetoothDevice.name}");
         selectedBluetoothDevice = bluetoothDevice;
       }
@@ -63,8 +64,8 @@ class BleService {
     await _stateSubscription?.cancel();
     BluetoothConnectionState? deviceState =
         (await selectedBluetoothDevice?.connectionState.first);
-    bool _check = deviceState == BluetoothConnectionState.connected;
-    if (_check) {
+    bool check = deviceState == BluetoothConnectionState.connected;
+    if (check) {
       selectedBluetoothDevice?.disconnect();
     }
 

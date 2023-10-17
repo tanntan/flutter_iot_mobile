@@ -2,15 +2,15 @@ import 'dart:convert';
 
 class JsonMsg {
   String authWs(String token) {
-    var JsonString = jsonEncode({
+    var jsonString = jsonEncode({
       "type": "auth",
       "access_token": token,
     });
-    return JsonString;
+    return jsonString;
   }
 
   String getLongLiveToken(String clientName) {
-    var JsonObject = jsonEncode({
+    var jsonObject = jsonEncode({
       "id": 1,
       "type": "auth/long_lived_access_token",
       "client_name": clientName,
@@ -18,14 +18,14 @@ class JsonMsg {
       "lifespan": 365
     });
 
-    return JsonObject;
+    return jsonObject;
   }
 
   String deviceRegistry(int id) {
-    var JsonObject =
+    var jsonObject =
         jsonEncode({"type": "config/device_registry/list", "id": id});
 
-    return JsonObject;
+    return jsonObject;
   }
 
   String subEvent(int id) {
@@ -40,7 +40,6 @@ class JsonMsg {
   }
 
   String callServiceMsg(String entityId, String command) {
-    var json2 = jsonEncode({"entity_id": "light.yeelink_color5_805d_light"});
     var jsonObject = jsonEncode(
       {
         "type": "call_service",

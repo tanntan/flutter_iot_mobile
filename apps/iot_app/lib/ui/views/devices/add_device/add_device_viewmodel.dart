@@ -28,7 +28,6 @@ class AddDeviceViewModel extends StreamViewModel<List<BluetoothDevice>> {
   Future<void> initial() async {
     try {
       if (await FlutterBluePlus.isAvailable == false) {
-        print("object");
         return;
       }
       if (Platform.isAndroid) {
@@ -36,25 +35,22 @@ class AddDeviceViewModel extends StreamViewModel<List<BluetoothDevice>> {
       }
       await FlutterBluePlus.adapterState
           .map((s) {
-            print(s);
             return s;
           })
           .where((s) => s == BluetoothAdapterState.on)
           .first;
     } catch (e) {
-      print(e.toString());
+      rethrow;
     }
   }
 
   @override
-  // TODO: implement dataReady
   bool get dataReady {
-    Future.delayed(Duration(seconds: 5));
+    Future.delayed(const Duration(seconds: 5));
     return isDataReady;
   }
 
   @override
-  // TODO: implement stream
   Stream<List<BluetoothDevice>> get stream => scanDevice();
 
   Stream<List<BluetoothDevice>> scanDevice() async* {
@@ -77,7 +73,7 @@ class AddDeviceViewModel extends StreamViewModel<List<BluetoothDevice>> {
     _scanSubscription?.cancel();
     _scanSubscription =
         _bleService.scanBle([uuid]).listen((List<ScanResult> scanResults) {
-      scanResults.forEach((ScanResult scanResult) {
+      for (var scanResult in scanResults) {
         var bleDevice = BluetoothDevice(
             remoteId: scanResult.device.remoteId,
             localName: scanResult.device.localName,
@@ -91,9 +87,9 @@ class AddDeviceViewModel extends StreamViewModel<List<BluetoothDevice>> {
           bleDevices[idx] = bleDevice;
         }
         notifyListeners();
-      });
+      }
     });
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(const Duration(seconds: 5));
     isDataReady = bleDevices.isNotEmpty;
     notifyListeners();
   }
@@ -137,7 +133,6 @@ class AddDeviceViewModel extends StreamViewModel<List<BluetoothDevice>> {
 
   @override
   void dispose() {
-    print('dispose');
     _bleService.stopScanBle();
     _scanSubscription!.cancel();
     super.dispose();

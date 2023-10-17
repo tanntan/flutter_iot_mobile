@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 class AppConfig {
   static const String appName = 'LTiot';
   static const String globalAdminUrl =

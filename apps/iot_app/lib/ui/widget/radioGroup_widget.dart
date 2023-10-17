@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class RadioGroupWidget extends StatefulWidget {
@@ -13,10 +15,12 @@ class RadioGroupWidget extends StatefulWidget {
 }
 
 class _RadioGroupState extends State<RadioGroupWidget> {
+  // ignore: prefer_typing_uninitialized_variables
   var _language;
   @override
   Widget build(BuildContext context) {
     return widget.radioList!.isEmpty
+        // ignore: prefer_const_constructors
         ? Text('No List')
         : Column(
             children: widget.radioList!.map(

@@ -85,9 +85,9 @@ class CustomTextField extends StackedView<CustomTextFieldModel> {
           borderRadius: BorderRadius.circular(50),
           borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
         ),
-        contentPadding: EdgeInsets.symmetric(
+        contentPadding: const EdgeInsets.symmetric(
             horizontal: 16.0, vertical: 12.0), // Padding inside the field
-        prefixIcon: prefexIcon ?? Icon(Icons.person), // Leading icon
+        prefixIcon: prefexIcon ?? const Icon(Icons.person), // Leading icon
       ),
     );
   }

@@ -6,8 +6,6 @@ import 'package:stacked_services/stacked_services.dart';
 
 import 'menu_dialog_model.dart';
 
-const double _graphicSize = 60;
-
 class MenuDialog extends StackedView<MenuDialogModel> {
   final DialogRequest request;
   final Function(DialogResponse) completer;

@@ -6,8 +6,6 @@ import 'package:stacked_services/stacked_services.dart';
 
 import 'new_device_dialog_dialog_model.dart';
 
-const double _graphicSize = 60;
-
 class NewDeviceDialogDialog extends StackedView<NewDeviceDialogDialogModel> {
   final DialogRequest request;
   final Function(DialogResponse) completer;
@@ -88,7 +86,7 @@ class NewDeviceDialogDialog extends StackedView<NewDeviceDialogDialogModel> {
             // ),
             ElevatedButton(
               onPressed: () => completer(DialogResponse(confirmed: true)),
-              child: Text("Got it"),
+              child: const Text("Got it"),
             )
           ],
         ),

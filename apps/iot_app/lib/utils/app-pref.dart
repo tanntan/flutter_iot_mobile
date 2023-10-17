@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'dart:convert';
 
 import 'package:iot_app/core/model/activeLine_model.dart';
@@ -15,9 +17,8 @@ class AppPref {
   static Future<void> setUserModel(UserModel value) async {
     try {
       await _sharedPreferences?.setString('userModel', json.encode(value));
-    } catch (e) {
-      print(e.toString());
-    }
+      // ignore: empty_catches
+    } catch (e) {}
   }
 
   static Future<UserModel> getUserModel() async {
@@ -30,19 +31,14 @@ class AppPref {
   }
 
   static Future<void> setCompanyInfo(CompanyInfoModel value) async {
-    try {
-      bool? success = await _sharedPreferences?.setString(
-          'companyInfo', json.encode(value));
-      print('success $success');
-    } catch (e) {
-      print(e.toString());
+    try {} catch (e) {
+      rethrow;
     }
   }
 
   static Future<CompanyInfoModel> getCompanyInfo() async {
     var jsonData =
         json.decode(_sharedPreferences?.getString('companyInfo') ?? '{}');
-    print('jsonData $jsonData');
     CompanyInfoModel companyInfoModel = CompanyInfoModel.fromJson(jsonData);
 
     return companyInfoModel;
@@ -66,15 +62,14 @@ class AppPref {
   static void setActiveLineData(ActiveLineModel model) async {
     try {
       await _sharedPreferences?.setString('activeLineData', json.encode(model));
-    } catch (e) {
-      print(e.toString());
-    }
+      // ignore: empty_catches
+    } catch (e) {}
   }
 
   static Future<ActiveLineModel> getActiveLine() async {
-    var _lineModel =
+    var lineModel =
         json.decode(_sharedPreferences?.getString('activeLineData') ?? '{}');
-    return ActiveLineModel.fromJson(_lineModel);
+    return ActiveLineModel.fromJson(lineModel);
   }
 
   static Future<String> getHomeAssistantUrl() async {

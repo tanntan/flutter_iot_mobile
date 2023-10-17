@@ -21,13 +21,13 @@ class SettingView extends StackedView<SettingViewModel> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: CustomScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         slivers: [
           SliverAppBar.large(
             title: TitleWidget(title: translate(context).ksSetting),
           ),
           SliverPadding(
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               right: 15,
               left: 15,
             ),
@@ -35,10 +35,10 @@ class SettingView extends StackedView<SettingViewModel> {
               delegate: SliverChildListDelegate(
                 [
                   Container(
-                    padding: EdgeInsets.only(top: 10, bottom: 10),
+                    padding: const EdgeInsets.only(top: 10, bottom: 10),
                     decoration: BoxDecoration(
                       color: Colors.grey.withOpacity(0.2),
-                      borderRadius: BorderRadius.all(
+                      borderRadius: const BorderRadius.all(
                         Radius.circular(15),
                       ),
                     ),
@@ -50,19 +50,19 @@ class SettingView extends StackedView<SettingViewModel> {
                               translate(context).ksLanguage),
                           onTap: () => viewModel.languageSetting(
                               translate(context).ksLanguage, context),
-                          leading: Icon(Icons.public),
+                          leading: const Icon(Icons.public),
                         ),
                         ListItemWidget(
                           title: AppLocalizations.of(context)!.ksDisplayMode,
-                          subtitle: Text('Dark'),
+                          subtitle: const Text('Dark'),
                           onTap: viewModel.handleThemechange,
-                          leading: Icon(Icons.display_settings),
+                          leading: const Icon(Icons.display_settings),
                         ),
                         ListItemWidget(
                           title: AppLocalizations.of(context)!.ksTimeZone,
-                          subtitle: Text('Dark'),
+                          subtitle: const Text('Dark'),
                           onTap: () => {},
-                          leading: Icon(Icons.time_to_leave),
+                          leading: const Icon(Icons.time_to_leave),
                         ),
                       ],
                     ),
