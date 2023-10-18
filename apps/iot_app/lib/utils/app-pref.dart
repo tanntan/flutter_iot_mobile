@@ -31,8 +31,10 @@ class AppPref {
   }
 
   static Future<void> setCompanyInfo(CompanyInfoModel value) async {
-    try {} catch (e) {
-      rethrow;
+    try {
+      await _sharedPreferences?.setString('companyInfo', json.encode(value));
+    } catch (e) {
+      print(e.toString());
     }
   }
 

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:iot_app/app/app.locator.dart';
+import 'package:iot_app/app/app.router.dart';
 import 'package:iot_app/core/iotapi_provider.dart';
 import 'package:iot_app/core/model/activeLine_model.dart';
 import 'package:iot_app/core/model/companyInfo_model.dart';
@@ -11,7 +12,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class HomeViewModel extends StreamViewModel<List<IotDeviceModel>> {
-  final _navigationService = locator<NavigationService>();
+  final navigationService = locator<NavigationService>();
   final iotProvider = locator<IotApiProvider>();
 
   final websocketProvider = locator<WebSocketProvider>();
@@ -37,11 +38,11 @@ class HomeViewModel extends StreamViewModel<List<IotDeviceModel>> {
   }
 
   void showDialog() {
-    _navigationService.navigateTo('/thridparty-view');
+    navigationService.navigateToAddDeviceView();
   }
 
   void showBottomSheet() {
-    _navigationService.navigateTo('/profile-view');
+    navigationService.navigateTo('/profile-view');
   }
 
   @override

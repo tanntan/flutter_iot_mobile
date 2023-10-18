@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iot_app/app/app.router.dart';
 import 'package:iot_app/ui/views/home/home_viewmodel.dart';
 import 'package:iot_app/ui/widget/title_widget.dart';
 import 'package:iot_app/ui/widgets/common/custom_appbar/custom_appbar.dart';
@@ -44,40 +45,50 @@ class HomeView extends StackedView<HomeViewModel> {
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
-                      SizedBox(
-                        width: 160.0,
-                        child: Card(
-                          elevation: 0.0,
-                          color: Theme.of(context).colorScheme.primary,
-                          child: Container(
-                            padding: const EdgeInsets.all(10),
-                            child: Column(
-                              children: [
-                                Subtext(
-                                    text: translate(context).ksConnectedDevice,
+                      InkWell(
+                        onTap: () {
+                          viewModel.navigationService.navigateToDevicesView();
+                        },
+                        child: SizedBox(
+                          width: 160.0,
+                          child: Card(
+                            elevation: 0.0,
+                            color: Theme.of(context).colorScheme.primary,
+                            child: Container(
+                              padding: const EdgeInsets.all(10),
+                              child: Column(
+                                children: [
+                                  Subtext(
+                                      text:
+                                          translate(context).ksConnectedDevice,
+                                      style: TextStyle(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onPrimary,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                      )),
+                                  TitleWidget(
+                                    title:
+                                        viewModel.data?.length.toString() ?? '',
                                     style: TextStyle(
                                       color: Theme.of(context)
                                           .colorScheme
                                           .onPrimary,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.bold,
-                                    )),
-                                TitleWidget(
-                                  title:
-                                      viewModel.data?.length.toString() ?? '',
-                                  style: TextStyle(
-                                    color:
-                                        Theme.of(context).colorScheme.onPrimary,
-                                    fontSize: 60,
+                                      fontSize: 60,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
                       ),
                       InkWell(
-                        onTap: viewModel.showDialog,
+                        onTap: () {
+                          viewModel.navigationService
+                              .navigateToThridpartyView();
+                        },
                         child: SizedBox(
                           width: 160.0,
                           child: Card(

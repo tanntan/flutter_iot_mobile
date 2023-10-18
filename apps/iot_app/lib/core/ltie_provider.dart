@@ -15,9 +15,6 @@ class LtieProvider extends BaseViewModel {
       ActiveLineModel activeLineModel = await _ltieService.getActiveLine({});
       return activeLineModel;
     } catch (e) {
-      if (kDebugMode) {
-        print(e.toString());
-      }
       return ActiveLineModel();
     }
   }
